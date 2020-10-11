@@ -3,7 +3,7 @@
 //exportar dados
 
 const funcionarios = require('../model/funcionarios.json')
-const fs = require('fs')
+//const fs = require('fs')
 
 const getAll = (req, res) => {
     console.log(req.url)
