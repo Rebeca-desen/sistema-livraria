@@ -1,25 +1,21 @@
-const express = require("express")
-const bodyParser = require("body-parser")
+const bodyParser = require('body-parser')
+const express = require('express')
 const app = express()
 
-//rotas
-const index = require("./src/routes/index")
-const funcionarios = require("./src/routes/funcionariosRoutes")
-
-//configurar body parser
-app.use(bodyParser.json());
-// app.use(express.json()); - Podemos usar a propria função de parser de json do express, sem a necessidade de instalar o body parser 
-
+const funcionariosRoute = require('./src/routes/funcionariosRoutes')
+const index = require('./src/routes/index')
+app.use (bodyParser.json())
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
-    )
-    next()
-  })
+  )
+  next()
+})
 
 app.use("/", index)
-app.use("/funcionarios",funcionarios )
+app.use("/funcionarios", funcionariosRoute)
+
 
 module.exports = app

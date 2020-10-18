@@ -7,9 +7,15 @@ const funcionarios = require('../model/funcionarios.json')
 
 const getAll = (req, res) => {
     console.log(req.url)
-    res.staus(200).send(funcionarios)
+    res.status(200).send(funcionarios)
+}
+
+const getById = (req, res) => {
+const id = req.params.id
+res.status(200).send(funcionarios.find((funcionario) => funcionario.id == id ))
 }
 
 module.exports = {
-    getAll
+    getAll,
+    getById
 }
