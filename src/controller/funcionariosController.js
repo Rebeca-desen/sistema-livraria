@@ -4,6 +4,7 @@
 
 const funcionarios = require('../model/funcionarios.json')
 //const fs = require('fs')
+const fs = require('fs')
 
 const getAll = (req, res) => {
     console.log(req.url)
@@ -15,7 +16,30 @@ const id = req.params.id
 res.status(200).send(funcionarios.find((funcionario) => funcionario.id == id ))
 }
 
+const postFuncionarios = (req, res) => {
+    console.log(res.body)
+const {id, nome, idade, cpf, rg, data_nasc, sexo , email, senha, cep, endereco, numero, bairro, cidade, estado, telefone_fixo, celular, altura, peso, tipo_sanguineo} = req.body
+funcionarios.push ({ id, nome, idade, cpf, rg, data_nasc, sexo , email, senha, cep, endereco, numero, bairro, cidade, estado, telefone_fixo, celular, altura, peso, tipo_sanguineo})
+fs.writeFile("./src/model/funcionarios.json", JSON.stringify(funcionarios), 'utf8', function(err){
+    if(err){
+      return res.status(424).send({message: err})
+    }
+  console.log("Arquivo atualizado com sucesso!")
+  })
+    res.status(200).send(funcionarios)
+  }
+ 
+  const deleteFuncionarios = (req, res) => {
+    const deletePorNome = funcionarios.filter(funcionario => funcionario.nome == nome)
+    for (i = 0; i < deletePorNome.length; i++){
+      const index = funcionarios.indexOf(deletePorNome[i])
+      funcionarios.splice(index, 1)
+    }
+    res.status(200).send(funcionarios)
+}
 module.exports = {
     getAll,
-    getById
+    getById,
+    postFuncionarios,
+    deleteFuncionarios
 }
