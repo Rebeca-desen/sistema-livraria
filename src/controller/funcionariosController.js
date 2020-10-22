@@ -29,17 +29,41 @@ fs.writeFile("./src/model/funcionarios.json", JSON.stringify(funcionarios), 'utf
     res.status(200).send(funcionarios)
   }
  
-  const deleteFuncionarios = (req, res) => {
-    const deletePorNome = funcionarios.filter(funcionario => funcionario.nome == nome)
+const getBySenha = (res, req) => {
+  const senha = req.query.senha
+  if (senha){
+  const senhaDoFuncio = funcionarios.filter(funcionario => funcionario.senha.includes(senha))
+  res.status(200).send(senhaDoFuncio)
+}
+else{
+  res.status(500).send({message: "deu erro minha linda"})
+ }
+}
+
+  /*const deleteFuncionarios = (req, res) => {
+    const nome = req.query.nome
+    const deletePorNome = funcionarios.find(funcionario => funcionario.nome == nome)
     for (i = 0; i < deletePorNome.length; i++){
       const index = funcionarios.indexOf(deletePorNome[i])
       funcionarios.splice(index, 1)
     }
-    res.status(200).send(funcionarios)
+
+fs.writeFile("./src/model/funcionarios.json", JSON.stringify(funcionarios), 'utf8', function (err) {
+  if (err) {
+    return res.status(424).send( "apagou n hein" );
+  }
+  else{
+  console.log("Arquivo atualizado com sucesso!");}
+  res.status(200).send(funcionarios);
+});
+
+res.status(200).send(funcionarios);
 }
+*/
 module.exports = {
     getAll,
     getById,
     postFuncionarios,
-    deleteFuncionarios
+    getBySenha
+   // deleteFuncionarios
 }
