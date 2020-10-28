@@ -7,7 +7,7 @@ const controller = require('../controller/funcionariosController')
 
 router.get("/", controller.getAll)
 router.get("/:id", controller.getById)
-router.get("/senha/:senha", controller.getBySenha)
+router.get("/:email", controller.getByEmail)
 router.post("/", controller.postFuncionarios)
 
 //router.delete("/:nome", controller.deleteFuncionarios)

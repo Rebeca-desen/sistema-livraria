@@ -2,29 +2,28 @@
   "name": "sistema-livraria",
   "version": "1.0.0",
   "description": "Simulação de um sistema de uma livraria no centro do Recife",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ./server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rebeca-desen/sistema-livraria.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Rebeca-desen/sistema-livraria/issues"
   },
   "homepage": "https://github.com/Rebeca-desen/sistema-livraria#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.4",
-    "npm-start-command": "^1.0.1"
-  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "query-string": "^6.13.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }

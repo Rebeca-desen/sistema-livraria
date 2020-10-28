@@ -5,6 +5,7 @@
 const funcionarios = require('../model/funcionarios.json')
 //const fs = require('fs')
 const fs = require('fs')
+const query = require('query-string')
 
 const getAll = (req, res) => {
     console.log(req.url)
@@ -29,11 +30,11 @@ fs.writeFile("./src/model/funcionarios.json", JSON.stringify(funcionarios), 'utf
     res.status(200).send(funcionarios)
   }
  
-const getBySenha = (res, req) => {
-  const senha = req.query.senha
+const getByEmail = (res, req) => {
+  const email = req.query.email
   if (senha){
-  const senhaDoFuncio = funcionarios.filter(funcionario => funcionario.senha.includes(senha))
-  res.status(200).send(senhaDoFuncio)
+  const emailDoFuncio = funcionarios.filter(funcionario => funcionario.email.includes(email))
+  res.status(200).send(email)
 }
 else{
   res.status(500).send({message: "deu erro minha linda"})
@@ -64,6 +65,6 @@ module.exports = {
     getAll,
     getById,
     postFuncionarios,
-    getBySenha
+    getByEmail
    // deleteFuncionarios
 }
