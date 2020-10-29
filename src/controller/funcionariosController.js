@@ -30,11 +30,13 @@ fs.writeFile("./src/model/funcionarios.json", JSON.stringify(funcionarios), 'utf
     res.status(200).send(funcionarios)
   }
  
-const getByEmail = (res, req) => {
+const getByEmail = (req, res) => {
   const email = req.query.email
+  console.log(res.status)
   if (senha){
   const emailDoFuncio = funcionarios.filter(funcionario => funcionario.email.includes(email))
-  res.status(200).send(email)
+  res.status(200).send(emailDoFuncio)
+  
 }
 else{
   res.status(500).send({message: "deu erro minha linda"})
