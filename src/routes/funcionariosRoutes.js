@@ -5,10 +5,10 @@ const express = require('express')
 const router = express.Router()
 const controller = require('../controller/funcionariosController')
 
-router.get("/", controller.getAll)
+router.get("/todos", controller.getAll)
 router.get("/:id", controller.getById)
-router.get("/:email", controller.getByEmail)
+router.get("/", controller.getByEmail)
 router.post("/", controller.postFuncionarios)
+router.delete("/", controller.deleteFuncionarios)
 
-//router.delete("/:nome", controller.deleteFuncionarios)
 module.exports = router

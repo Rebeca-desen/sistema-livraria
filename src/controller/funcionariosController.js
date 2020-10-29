@@ -31,9 +31,9 @@ fs.writeFile("./src/model/funcionarios.json", JSON.stringify(funcionarios), 'utf
   }
  
 const getByEmail = (req, res) => {
+  console.log(req.query)
   const email = req.query.email
-  console.log(res.status)
-  if (senha){
+  if (email){
   const emailDoFuncio = funcionarios.filter(funcionario => funcionario.email.includes(email))
   res.status(200).send(emailDoFuncio)
   
@@ -43,7 +43,7 @@ else{
  }
 }
 
-  /*const deleteFuncionarios = (req, res) => {
+  const deleteFuncionarios = (req, res) => {
     const nome = req.query.nome
     const deletePorNome = funcionarios.find(funcionario => funcionario.nome == nome)
     for (i = 0; i < deletePorNome.length; i++){
@@ -62,11 +62,11 @@ fs.writeFile("./src/model/funcionarios.json", JSON.stringify(funcionarios), 'utf
 
 res.status(200).send(funcionarios);
 }
-*/
+
 module.exports = {
     getAll,
     getById,
     postFuncionarios,
-    getByEmail
-   // deleteFuncionarios
+    getByEmail,
+   deleteFuncionarios
 }
