@@ -9,6 +9,6 @@ router.get("/todos", controller.getAll)
 router.get("/:id", controller.getById)
 router.get("/", controller.getByEmail)
 router.post("/", controller.postFuncionarios)
-//router.delete("/delete", controller.deleteFuncionarios)
+router.delete("/deletar", controller.deleteFuncionarios)
 
 module.exports = router
