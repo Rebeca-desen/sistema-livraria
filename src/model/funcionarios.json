@@ -1,5 +1,4 @@
-[
-    {
+[{
         "id": 1,
         "nome": "César Tiago Lima",
         "idade": 60,
@@ -262,5 +261,4 @@
         "peso": 85,
         "tipo_sanguineo": "A-"
     }
-
 ]
